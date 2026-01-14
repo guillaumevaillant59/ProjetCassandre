@@ -6,3 +6,11 @@ body {
     background-color: #c9c6c6;
     color: #112c01;
 }
+
+
+header, footer {
+    background-color: #6e0404;
+    color: #e1e130;
+    padding: 10px 0;
+    text-align: center;
+}
