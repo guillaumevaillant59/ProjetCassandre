@@ -7,6 +7,13 @@ body {
     color: #112c01;
 }
 
+h1 {
+    text-align: center;
+}
+
+#acceuil {
+    text-align: center;
+}
 
 header, footer {
     background-color: #6e0404;
