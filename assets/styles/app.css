@@ -1,5 +1,8 @@
 * { 
     box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: Crimson Text, Arial, sans-serif;
 }
 
 body {
@@ -21,3 +24,25 @@ header, footer {
     padding: 10px 0;
     text-align: center;
 }
+
+header a, footer a {
+    color: #e1e130;
+    text-decoration: none;
+    
+}
+
+header a:focus, footer a:focus {
+    color: #112c01;
+    text-decoration: underline;
+    
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #6e0404;
+    
+}
+
