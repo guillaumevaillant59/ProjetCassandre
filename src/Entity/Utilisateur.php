@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,20 @@ class Utilisateur
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTime $creation = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Role $role = null;
+
+    /**
+     * @var Collection<int, Audit>
+     */
+    #[ORM\ManyToMany(targetEntity: Audit::class, inversedBy: 'utilisateurs')]
+    private Collection $audits;
+
+    public function __construct()
+    {
+        $this->audits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +106,42 @@ class Utilisateur
     public function setCreation(\DateTime $creation): static
     {
         $this->creation = $creation;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): static
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Audit>
+     */
+    public function getAudits(): Collection
+    {
+        return $this->audits;
+    }
+
+    public function addAudit(Audit $audit): static
+    {
+        if (!$this->audits->contains($audit)) {
+            $this->audits->add($audit);
+        }
+
+        return $this;
+    }
+
+    public function removeAudit(Audit $audit): static
+    {
+        $this->audits->removeElement($audit);
 
         return $this;
     }

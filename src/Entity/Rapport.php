@@ -29,6 +29,9 @@ class Rapport
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTime $creation = null;
 
+    #[ORM\ManyToOne(inversedBy: 'rapports')]
+    private ?Audit $audit = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -90,6 +93,18 @@ class Rapport
     public function setCreation(\DateTime $creation): static
     {
         $this->creation = $creation;
+
+        return $this;
+    }
+
+    public function getAudit(): ?Audit
+    {
+        return $this->audit;
+    }
+
+    public function setAudit(?Audit $audit): static
+    {
+        $this->audit = $audit;
 
         return $this;
     }
