@@ -41,6 +41,12 @@ class Client
     )]
     private ?string $email = null;
 
+    #[ORM\Column]
+    private ?int $Siret = null;
+
+    #[ORM\Column]
+    private ?int $telephone = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,6 +72,30 @@ class Client
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getSiret(): ?int
+    {
+        return $this->Siret;
+    }
+
+    public function setSiret(int $Siret): static
+    {
+        $this->Siret = $Siret;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?int
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(int $telephone): static
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }
