@@ -2,25 +2,32 @@
 
 namespace App\Form;
 
-use App\Entity\Adresse;
-use App\Entity\Client;
+use App\Entity\Audit;
+use App\Entity\Role;
+use App\Entity\Utilisateur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ClientType extends AbstractType
+class UtilisateurType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
+            ->add('nom')
+            ->add('prenom')
             ->add('email')
-            ->add('Siret')
-            ->add('telephone')
-            ->add('adresse', EntityType::class, [
-                'class' => Adresse::class,
+            ->add('mdp')
+            ->add('creation')
+            ->add('role', EntityType::class, [
+                'class' => Role::class,
                 'choice_label' => 'id',
+            ])
+            ->add('audits', EntityType::class, [
+                'class' => Audit::class,
+                'choice_label' => 'id',
+                'multiple' => true,
             ])
         ;
     }
@@ -28,7 +35,7 @@ class ClientType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Client::class,
+            'data_class' => Utilisateur::class,
         ]);
     }
 }

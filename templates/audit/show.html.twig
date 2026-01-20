@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Audit{% endblock %}
+
+{% block body %}
+    <h1>Audit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ audit.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ audit.type }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ audit.nom }}</td>
+            </tr>
+            <tr>
+                <th>Creation</th>
+                <td>{{ audit.creation ? audit.creation|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fin</th>
+                <td>{{ audit.fin ? audit.fin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ audit.statut }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_audit_index') }}">back to list</a>
+
+    <a href="{{ path('app_audit_edit', {'id': audit.id}) }}">edit</a>
+
+    {{ include('audit/_delete_form.html.twig') }}
+{% endblock %}

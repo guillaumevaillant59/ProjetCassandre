@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Audit index{% endblock %}
+
+{% block body %}
+    <h1>Audit index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Nom</th>
+                <th>Creation</th>
+                <th>Fin</th>
+                <th>Statut</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for audit in audits %}
+            <tr>
+                <td>{{ audit.id }}</td>
+                <td>{{ audit.type }}</td>
+                <td>{{ audit.nom }}</td>
+                <td>{{ audit.creation ? audit.creation|date('Y-m-d') : '' }}</td>
+                <td>{{ audit.fin ? audit.fin|date('Y-m-d') : '' }}</td>
+                <td>{{ audit.statut }}</td>
+                <td>
+                    <a href="{{ path('app_audit_show', {'id': audit.id}) }}">show</a>
+                    <a href="{{ path('app_audit_edit', {'id': audit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_audit_new') }}">Create new</a>
+{% endblock %}
