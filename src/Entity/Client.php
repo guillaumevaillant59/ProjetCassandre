@@ -44,9 +44,22 @@ class Client
     private ?string $email = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Le numéro SIRET est obligatoire.")]
+    #[Assert\Length(
+        min: 14,
+        max: 14,
+        exactMessage: "Le numéro SIRET doit contenir exactement {{ limit }} chiffres."
+    )]
     private ?int $Siret = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Le numéro de téléphone est obligatoire.")]
+    #[Assert\Length(
+        min: 10,
+        max: 10,
+        minMessage: "Le numéro de téléphone doit contenir {{ limit }} chiffres.",
+        maxMessage: "Le numéro de téléphone doit contenir {{ limit }} chiffres."
+    )]
     private ?int $telephone = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]

@@ -263,11 +263,9 @@ class AppFixtures extends Fixture
         $manager->persist($facture0); 
 
         $client0->addAudit($audit0);
-        $client1->addAudit($audit1);
-        $client2->addAudit($audit2);
-        $manager->persist($client0);
-        $manager->persist($client1);
-        $manager->persist($client2);
+        $client0->addAudit($audit1);
+        $client0->addAudit($audit2);
+        $manager->persist($client0);       
 
         $utilisateur0->addAudit($audit0);
         $utilisateur0->addAudit($audit2);
