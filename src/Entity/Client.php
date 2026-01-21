@@ -50,7 +50,7 @@ class Client
         max: 14,
         exactMessage: "Le numéro SIRET doit contenir exactement {{ limit }} chiffres."
     )]
-    private ?int $Siret = null;
+    private ?string $Siret = null;
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Le numéro de téléphone est obligatoire.")]

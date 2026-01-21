@@ -18,7 +18,7 @@ class Utilisateur
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le nom est obligatoire.")]
     #[Assert\Length(
         min: 2,
@@ -28,7 +28,7 @@ class Utilisateur
     )]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
     #[Assert\Length(
         min: 2,

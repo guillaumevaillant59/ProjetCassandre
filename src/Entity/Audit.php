@@ -19,7 +19,7 @@ class Audit
     #[ORM\Column(length: 30)]
     private ?string $type = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(length: 100)]
     private ?string $nom = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]

@@ -192,6 +192,7 @@ class AppFixtures extends Fixture
 
         $audit0 = new Audit();
         $audit0->setNom('Audit Initial');
+        $audit0->setType('Audit de Conformité');
         $audit0->setCreation(new \DateTime('2024-02-01 09:00:00'));
         $audit0->setFin(new \DateTime('2024-02-10 17:00:00'));
         $audit0->setStatut('Terminé');
@@ -214,7 +215,8 @@ class AppFixtures extends Fixture
         
 
         $audit1 = new Audit();
-        $audit1->setNom('Audit de Sécurité');   
+        $audit1->setNom('Audit de Sécurité');  
+        $audit1->setType('Audit de Conformité'); 
         $audit1->setCreation(new \DateTime('2024-03-05 10:00:00'));
         $audit1->setStatut('En cours');
         $audit1->setClient($client1);
@@ -226,6 +228,7 @@ class AppFixtures extends Fixture
 
         $audit2 = new Audit();
         $audit2->setNom('Audit de Performance');
+        $audit2->setType('Audit de Conformité');
         $audit2->setCreation(new \DateTime('2024-04-01 09:00:00'));
         $audit2->setStatut('En cours');
         $audit2->setClient($client2);
@@ -238,13 +241,15 @@ class AppFixtures extends Fixture
 
         $audit3 = new Audit();
         $audit3->setNom('Audit de Conformité');
+        $audit3->setType('Audit de Conformité');
         $audit3->setCreation(new \DateTime('2024-05-10 11:00:00'));
         $audit3->setStatut('Planifié'); 
         $audit3->setClient($client3);
         $manager->persist($audit3);
 
         $audit4 = new Audit();
-        $audit4->setNom('Audit Final');         
+        $audit4->setNom('Audit Final');
+        $audit4->setType('Audit de Conformité');         
         $audit4->setCreation(new \DateTime('2024-06-15 09:00:00'));
         $audit4->setStatut('Planifié'); 
         $audit4->setClient($client4);
