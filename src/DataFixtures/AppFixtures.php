@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
         $client1 = new Client();
         $client1->setName('Warhammer Corporation');
         $client1->setEmail('warhammer@example.com');
-        $client1->setTelephone('0123456790');
+        $client1->setTelephone('0123456798');
         $client1->setSiret(12345678901235);
         $adresse1 = new Adresse();
         $adresse1->setNumero(45);
@@ -54,7 +54,7 @@ class AppFixtures extends Fixture
         $client2 = new Client();
         $client2->setName('Ageofsigmar Corporation');
         $client2->setEmail('aos@example.com');
-        $client2->setTelephone('0123456791');
+        $client2->setTelephone('0123456897');
         $client2->setSiret(12345678901236);
         $adresse2 = new Adresse();
         $adresse2->setNumero(78);   
@@ -71,7 +71,7 @@ class AppFixtures extends Fixture
         $client3 = new Client();
         $client3->setName('Maurice Corporation');
         $client3->setEmail('maurice@example.com');
-        $client3->setTelephone('0123456792');
+        $client3->setTelephone('0123457896');
         $client3->setSiret(12345678901237);
         $adresse3 = new Adresse();
         $adresse3->setNumero(5);
@@ -87,7 +87,7 @@ class AppFixtures extends Fixture
         $client4 = new Client();
         $client4->setName('Plouf Corporation');
         $client4->setEmail('plouf@example.com');
-        $client4->setTelephone('0123456793');
+        $client4->setTelephone('0123467895');
         $client4->setSiret(12345678901238);
         $adresse4 = new Adresse();
         $adresse4->setNumero(22);

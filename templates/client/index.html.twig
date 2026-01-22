@@ -25,8 +25,8 @@
                 <td>{{ client.Siret }}</td>
                 <td>{{ client.telephone }}</td>
                 <td>
-                    <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+                    <a href="{{ path('app_client_show', {'id': client.id}) }}">Voir</a>
+                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_client_new') }}">Create new</a>
+    <a href="{{ path('app_client_new') }}">Nouveau</a>
 {% endblock %}
