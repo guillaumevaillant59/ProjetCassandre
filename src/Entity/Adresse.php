@@ -16,7 +16,7 @@ class Adresse
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Le numéro est obligatoire.")]
-    private ?int $numero = null;
+    private ?string $numero = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le nom de la rue est obligatoire.")]
@@ -45,12 +45,12 @@ class Adresse
         return $this->id;
     }
 
-    public function getNumero(): ?int
+    public function getNumero(): ?string
     {
         return $this->numero;
     }
 
-    public function setNumero(int $numero): static
+    public function setNumero(string $numero): static
     {
         $this->numero = $numero;
 

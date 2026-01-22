@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20260121132402 extends AbstractMigration
+final class Version20260122100007 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -24,7 +24,7 @@ final class Version20260121132402 extends AbstractMigration
         $this->addSql('CREATE TABLE audit (id INT AUTO_INCREMENT NOT NULL, client_id INT NOT NULL, type VARCHAR(30) NOT NULL, nom VARCHAR(100) NOT NULL, creation DATE NOT NULL, fin DATE DEFAULT NULL, statut VARCHAR(30) NOT NULL, INDEX IDX_9218FF7919EB6921 (client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE auditeur (id INT AUTO_INCREMENT NOT NULL, nom VARCHAR(100) NOT NULL, prenom VARCHAR(100) NOT NULL, statut VARCHAR(100) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE auditeur_audit (auditeur_id INT NOT NULL, audit_id INT NOT NULL, INDEX IDX_B88C2A7CD8CACAB (auditeur_id), INDEX IDX_B88C2A7CBD29F359 (audit_id), PRIMARY KEY(auditeur_id, audit_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE client (id INT AUTO_INCREMENT NOT NULL, adresse_id INT NOT NULL, name VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL, siret VARCHAR(255) NOT NULL, telephone INT NOT NULL, UNIQUE INDEX UNIQ_C74404554DE7DC5C (adresse_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE client (id INT AUTO_INCREMENT NOT NULL, adresse_id INT NOT NULL, name VARCHAR(100) NOT NULL, email VARCHAR(100) NOT NULL, siret VARCHAR(255) NOT NULL, telephone VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_C74404554DE7DC5C (adresse_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE facture (id INT AUTO_INCREMENT NOT NULL, audit_id INT DEFAULT NULL, numero INT NOT NULL, statut TINYINT(1) NOT NULL, prix_hors_taxe DOUBLE PRECISION NOT NULL, prix_toutes_taxes DOUBLE PRECISION NOT NULL, UNIQUE INDEX UNIQ_FE866410BD29F359 (audit_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE facture_taxe (facture_id INT NOT NULL, taxe_id INT NOT NULL, INDEX IDX_B03403257F2DEE08 (facture_id), INDEX IDX_B03403251AB947A4 (taxe_id), PRIMARY KEY(facture_id, taxe_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE rapport (id INT AUTO_INCREMENT NOT NULL, audit_id INT DEFAULT NULL, type VARCHAR(30) NOT NULL, nom VARCHAR(100) NOT NULL, chemin VARCHAR(150) NOT NULL, poids INT NOT NULL, creation DATE NOT NULL, INDEX IDX_BE34A09CBD29F359 (audit_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

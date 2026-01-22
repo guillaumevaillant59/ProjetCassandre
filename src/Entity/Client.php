@@ -59,7 +59,7 @@ class Client
         minMessage: "Le numéro de téléphone doit contenir {{ limit }} chiffres.",
         maxMessage: "Le numéro de téléphone doit contenir {{ limit }} chiffres."
     )]
-    private ?int $telephone = null;
+    private ?string $telephone = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
@@ -105,24 +105,24 @@ class Client
         return $this;
     }
 
-    public function getSiret(): ?int
+    public function getSiret(): ?string
     {
         return $this->Siret;
     }
 
-    public function setSiret(int $Siret): static
+    public function setSiret(string $Siret): static
     {
         $this->Siret = $Siret;
 
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): static
+    public function setTelephone(string $telephone): static
     {
         $this->telephone = $telephone;
 

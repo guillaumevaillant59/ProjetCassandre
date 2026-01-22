@@ -16,7 +16,7 @@ class Facture
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $numero = null;
+    private ?string $numero = null;
 
     #[ORM\Column]
     private ?bool $statut = null;
@@ -46,12 +46,12 @@ class Facture
         return $this->id;
     }
 
-    public function getNumero(): ?int
+    public function getNumero(): ?string
     {
         return $this->numero;
     }
 
-    public function setNumero(int $numero): static
+    public function setNumero(string $numero): static
     {
         $this->numero = $numero;
 

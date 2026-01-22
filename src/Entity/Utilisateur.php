@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
+#[UniqueEntity(fields: ['email'], message: "Cet email est déjà utilisé.")]
 class Utilisateur
 {
     #[ORM\Id]
@@ -46,10 +47,7 @@ class Utilisateur
         maxMessage: "L'email ne doit pas dépasser {{ limit }} caractères."
     )]
 
-    #[UniqueEntity(
-        fields: ['email'],
-        message: "Cet email est déjà utilisé."
-    )]
+    
     private ?string $email = null;
 
     #[ORM\Column(length: 30)]
