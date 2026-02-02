@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Validator\Regex;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
 #[UniqueEntity(fields: ['email'], message: "Cet email est déjà utilisé.")]
@@ -21,43 +22,35 @@ class Utilisateur
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le nom est obligatoire.")]
-    #[Assert\Length(
-        min: 2,
-        max: 100,
-        minMessage: "Le nom doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le nom ne doit pas dépasser {{ limit }} caractères."
+    #[Assert\Regex(
+        pattern: Regex::USAGE,
+        message: "Le nom ne doit contenir que des lettres (2 à 20 caractères)."
     )]
     private ?string $nom = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le prénom est obligatoire.")]
-    #[Assert\Length(
-        min: 2,
-        max: 100,
-        minMessage: "Le prénom doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le prénom ne doit pas dépasser {{ limit }} caractères."
+    #[Assert\Regex(
+        pattern: Regex::USAGE,
+        message: "Le prénom ne doit contenir que des lettres (2 à 20 caractères)."
     )]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "L'email est obligatoire.")]
     #[Assert\Email(message: "L'adresse email '{{ value }}' n'est pas valide.")]
-    #[Assert\Length(
-        max: 100,
-        maxMessage: "L'email ne doit pas dépasser {{ limit }} caractères."
-    )]
-
-    
+    #[Assert\Regex(
+        pattern: Regex::EMAIL,
+        message: "L'adresse email '{{ value }}' n'est pas valide."
+    )]    
     private ?string $email = null;
 
     #[ORM\Column(length: 30)]
     #[Assert\NotBlank(message: "Le mot de passe est obligatoire.")]
-    #[Assert\Length(
-        min: 8,
-        max: 100,
-        minMessage: "Le mot de passe doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le mot de passe ne doit pas dépasser {{ limit }} caractères."
-    )]  
+    #[Assert\Regex(
+        pattern: Regex::PASSWORD,
+        message: "Le mot de passe doit contenir au moins 8 caractères, dont au moins une lettre et un chiffre."
+    )] 
     private ?string $mdp = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
