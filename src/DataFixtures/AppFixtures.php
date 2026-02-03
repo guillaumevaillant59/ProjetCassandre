@@ -4,8 +4,6 @@ namespace App\DataFixtures;
 
 use App\Entity\Client;
 use App\Entity\Adresse;
-use App\Entity\Utilisateur;
-use App\Entity\Role;
 use App\Entity\Audit;
 use App\Entity\Auditeur;
 use App\Entity\Facture;
@@ -100,66 +98,7 @@ class AppFixtures extends Fixture
         $client4->setAdresse($adresse4);
         $manager->persist($client4);
 
-        $utilisateur0 = new Utilisateur();
-        $utilisateur0->setNom('Dupont');    
-        $utilisateur0->setEmail('dupont@example.com');
-        $utilisateur0->setPrenom('Jean');
-        $utilisateur0->setMdp('password123');
-        $utilisateur0->setCreation(new \DateTime('2024-01-15 10:00:00'));
-        $role0 = new Role();
-        $role0->setCode('Admin');
-        $manager->persist($role0);
-        $utilisateur0->setRole($role0);
-        $manager->persist($utilisateur0);
-
-        $utilisateur1 = new Utilisateur();
-        $utilisateur1->setNom('Martin');
-        $utilisateur1->setEmail('martin@example.com');
-        $utilisateur1->setPrenom('Pierre');
-        $utilisateur1->setMdp('password456');
-        $utilisateur1->setCreation(new \DateTime('2024-01-16 10:00:00'));
-        $role1 = new Role();
-        $role1->setCode('User');
-        $manager->persist($role1);
-        $utilisateur1->setRole($role1);
-        $manager->persist($utilisateur1);
-
-        $utilisateur2 = new Utilisateur();
-        $utilisateur2->setNom('Bernard');
-        $utilisateur2->setEmail('bernard@example.com');
-        $utilisateur2->setPrenom('Luc');
-        $utilisateur2->setMdp('password789');
-        $utilisateur2->setCreation(new \DateTime('2024-01-17 10:00:00'));
-        $role2 = new Role();
-        $role2->setCode('User');
-        $manager->persist($role2);
-        $utilisateur2->setRole($role2);
-        $manager->persist($utilisateur2);
-
-        $utilisateur3 = new Utilisateur();
-        $utilisateur3->setNom('Dubois');
-        $utilisateur3->setEmail('dubois@example.com');
-        $utilisateur3->setPrenom('Marie');
-        $utilisateur3->setMdp('password012');
-        $utilisateur3->setCreation(new \DateTime('2024-01-18 10:00:00'));
-        $role3 = new Role();
-        $role3->setCode('User');
-        $manager->persist($role3);
-        $utilisateur3->setRole($role3);
-        $manager->persist($utilisateur3);
-
-        $utilisateur4 = new Utilisateur();
-        $utilisateur4->setNom('Moreau');    
-        $utilisateur4->setEmail('moreau@example.com');
-        $utilisateur4->setPrenom('Sophie');
-        $utilisateur4->setMdp('password345');
-        $utilisateur4->setCreation(new \DateTime('2024-01-19 10:00:00'));
-        $role4 = new Role();
-        $role4->setCode('User');
-        $manager->persist($role4);
-        $utilisateur4->setRole($role4);
-        $manager->persist($utilisateur4);
-
+   
         $auditeur0 = new Auditeur();
         $auditeur0->setNom('Leroy');    
         $auditeur0->setPrenom('Antoine');
@@ -196,9 +135,7 @@ class AppFixtures extends Fixture
         $audit0->setCreation(new \DateTime('2024-02-01 09:00:00'));
         $audit0->setFin(new \DateTime('2024-02-10 17:00:00'));
         $audit0->setStatut('Terminé');
-        $audit0->setClient($client0);
-        $audit0->addUtilisateur($utilisateur0);
-        $audit0->addUtilisateur($utilisateur2);
+        $audit0->setClient($client0); 
         $audit0->addAuditeur($auditeur2);
         $audit0->addAuditeur($auditeur3);
         $rapport0 = new Rapport();
@@ -220,8 +157,6 @@ class AppFixtures extends Fixture
         $audit1->setCreation(new \DateTime('2024-03-05 10:00:00'));
         $audit1->setStatut('En cours');
         $audit1->setClient($client1);
-        $audit1->addUtilisateur($utilisateur1);
-        $audit1->addUtilisateur($utilisateur3);
         $audit1->addAuditeur($auditeur0);
         $audit1->addAuditeur($auditeur1);
         $manager->persist($audit1);
@@ -232,8 +167,6 @@ class AppFixtures extends Fixture
         $audit2->setCreation(new \DateTime('2024-04-01 09:00:00'));
         $audit2->setStatut('En cours');
         $audit2->setClient($client2);
-        $audit2->addUtilisateur($utilisateur0);
-        $audit2->addUtilisateur($utilisateur4);
         $audit2->addAuditeur($auditeur1);
         $audit2->addAuditeur($auditeur3);
         $audit2->addAuditeur($auditeur4);
@@ -271,18 +204,6 @@ class AppFixtures extends Fixture
         $client0->addAudit($audit1);
         $client0->addAudit($audit2);
         $manager->persist($client0);       
-
-        $utilisateur0->addAudit($audit0);
-        $utilisateur0->addAudit($audit2);
-        $utilisateur1->addAudit($audit1);
-        $utilisateur2->addAudit($audit0);
-        $utilisateur3->addAudit($audit1);
-        $utilisateur4->addAudit($audit2);   
-        $manager->persist($utilisateur0);
-        $manager->persist($utilisateur1);
-        $manager->persist($utilisateur2);
-        $manager->persist($utilisateur3);
-        $manager->persist($utilisateur4);   
 
         $auditeur0->addAudit($audit1);
         $auditeur1->addAudit($audit1);  
