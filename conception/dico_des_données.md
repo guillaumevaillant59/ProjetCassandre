@@ -4,7 +4,7 @@
 |-------------------|--------|---------------|----------------|---------|:---:|
 |Id_Utilisateur| Utilisateur_id|Id, PK|INT|Utilisateur|🟩|
 |nom|Utilisateur_nom|nom|VARCHAR(30)|Utilisateur|🟩|
-|prenom|Utilisateur_prénomt|prenom|VARCHAR(30)|Utilisateur|🟩|
+|prenom|Utilisateur_prenom|prenom|VARCHAR(30)|Utilisateur|🟩|
 |email|Utilisateur_email|email|VARCHAR(30)|Utilisateur|🟩|
 |password|Utilisateur_pass|password|VARCHAR(30)|Utilisateur|🟩|
 |Creation|Utilisateur_creation|Creation|DATE|Utilisateur|🟩|
