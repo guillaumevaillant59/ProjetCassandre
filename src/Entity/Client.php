@@ -13,6 +13,8 @@ use App\Validator\Regex;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
 #[UniqueEntity(fields: ['email'], message: "Cet email est déjà utilisé.")]
+#[UniqueEntity(fields: ['Siret'], message: "Ce numéro SIRET est déjà utilisé.")]
+#[UniqueEntity(fields: ['telephone'], message: "Ce numéro de téléphone est déjà utilisé.")]
 class Client
 {
     #[ORM\Id]
