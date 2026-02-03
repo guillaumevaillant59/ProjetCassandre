@@ -35,12 +35,7 @@ class Audit
     #[ORM\JoinColumn(nullable: false)]
     private ?Client $client = null;
 
-    /**
-     * @var Collection<int, Utilisateur>
-     */
-    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'audits')]
-    private Collection $utilisateurs;
-
+ 
     /**
      * @var Collection<int, Auditeur>
      */
@@ -55,7 +50,7 @@ class Audit
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+
         $this->auditeurs = new ArrayCollection();
         $this->rapports = new ArrayCollection();
     }
@@ -137,32 +132,6 @@ class Audit
         return $this;
     }
 
-    /**
-     * @return Collection<int, Utilisateur>
-     */
-    public function getUtilisateurs(): Collection
-    {
-        return $this->utilisateurs;
-    }
-
-    public function addUtilisateur(Utilisateur $utilisateur): static
-    {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->add($utilisateur);
-            $utilisateur->addAudit($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUtilisateur(Utilisateur $utilisateur): static
-    {
-        if ($this->utilisateurs->removeElement($utilisateur)) {
-            $utilisateur->removeAudit($this);
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Auditeur>
