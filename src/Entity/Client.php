@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use App\Validator\Regex;
 
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
@@ -22,11 +22,9 @@ class Client
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le nom est obligatoire.")]
-    #[Assert\Length(
-        min: 2,
-        max: 100,
-        minMessage: "Le nom doit contenir au moins {{ limit }} caractères.",
-        maxMessage: "Le nom ne doit pas dépasser {{ limit }} caractères."
+    #[Assert\Regex(
+        pattern: Regex::USAGE,
+        message: "Le nom ne doit contenir que des lettres (2 à 20 caractères)."
     )]
     private ?string $name = null;
 
@@ -34,30 +32,25 @@ class Client
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "L'email est obligatoire.")]
     #[Assert\Email(message: "L'adresse email '{{ value }}' n'est pas valide.")]
-    #[Assert\Length(
-        max: 100,
-        maxMessage: "L'email ne doit pas dépasser {{ limit }} caractères."
-    )]
-
-    
+    #[Assert\Regex(
+        pattern: Regex::EMAIL,
+        message: "L'adresse email '{{ value }}' n'est pas valide."
+    )]    
     private ?string $email = null;
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Le numéro SIRET est obligatoire.")]
-    #[Assert\Length(
-        min: 14,
-        max: 14,
-        exactMessage: "Le numéro SIRET doit contenir exactement {{ limit }} chiffres."
+    #[Assert\Regex(
+        pattern: Regex::SIRET,
+        message: "Le numéro SIRET '{{ value }}' n'est pas valide."
     )]
     private ?string $Siret = null;
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Le numéro de téléphone est obligatoire.")]
-    #[Assert\Length(
-        min: 10,
-        max: 10,
-        minMessage: "Le numéro de téléphone doit contenir {{ limit }} chiffres.",
-        maxMessage: "Le numéro de téléphone doit contenir {{ limit }} chiffres."
+    #[Assert\Regex(
+        pattern: Regex::PHONE,
+        message: "Le numéro de téléphone '{{ value }}' n'est pas valide."
     )]
     private ?string $telephone = null;
 

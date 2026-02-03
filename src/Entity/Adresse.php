@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AdresseRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Regex;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
 class Adresse
@@ -16,10 +17,18 @@ class Adresse
 
     #[ORM\Column]
     #[Assert\NotBlank(message: "Le numéro est obligatoire.")]
+    #[Assert\Regex(
+        pattern: Regex::NUMBER,
+        message: "Le numéro ne doit contenir que des lettres et des chiffres."
+    )]
     private ?string $numero = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank(message: "Le nom de la rue est obligatoire.")]
+    #[Assert\Regex(
+        pattern: Regex::STREET,
+        message: "Le nom de la rue '{{ value }}' n'est pas valide."
+    )]
     private ?string $nom = null;
 
     #[ORM\Column(length: 20, nullable: true)]
@@ -27,6 +36,10 @@ class Adresse
 
     #[ORM\Column(length: 30)]
     #[Assert\NotBlank(message: "Le code postal est obligatoire.")]
+    #[Assert\Regex(
+        pattern: Regex::ZIP_CODE,
+        message: "Le code postal '{{ value }}' n'est pas valide."
+    )]
     private ?string $postale = null;
 
     #[ORM\Column(length: 100)]
@@ -35,6 +48,10 @@ class Adresse
 
     #[ORM\Column(length: 30)]
     #[Assert\NotBlank(message: "Le pays est obligatoire.")] 
+    #[Assert\Regex(
+        pattern: Regex::CITY,
+        message: "Le pays '{{ value }}' n'est pas valide."
+    )]
     private ?string $pays = null;
 
     #[ORM\Column]
