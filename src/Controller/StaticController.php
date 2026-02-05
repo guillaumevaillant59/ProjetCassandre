@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
 
 final class StaticController extends AbstractController
 {
@@ -35,7 +37,8 @@ final class StaticController extends AbstractController
     #[Route('/cgv', name: 'app_cgv')]
     public function cgv(): Response
     {
-        return $this->render('static/cgv.html.twig');
+        //return $this->render('static/cgv.html.twig');
+        throw new AccessDeniedException();
     }
 
     #[Route('/accessibilite', name: 'app_accessibilite')]
