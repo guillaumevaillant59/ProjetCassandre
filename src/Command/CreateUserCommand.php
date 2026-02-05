@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-use App\Entity\User;
+use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
@@ -46,7 +46,7 @@ class CreateUserCommand extends Command
         $roles = array_map('trim', explode(',', $roleString));
         $roles = array_values(array_filter($roles));
 
-        $user = new User();
+        $user = new Utilisateur();
         $user->setEmail($email);
         $user->setRoles($roles);
 
