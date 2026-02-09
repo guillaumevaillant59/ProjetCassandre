@@ -3,6 +3,11 @@
 
     <nav class="menu">
         <a href="{{ path('app_accueil') }}" class="lien">Accueil</a>
-        <a href="{{ path('app_client_index') }}" class="lien">Clients</a>
+        <a href="{{ path('app_client_index') }}" class="lien">Clients</a>        
+        {% if app.user %}
+            <a href="{{ path('app_logout') }}" class="lien">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="lien">Connexion</a>
+        {% endif %}
     </nav>
 </header>

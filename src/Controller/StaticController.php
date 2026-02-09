@@ -37,8 +37,7 @@ final class StaticController extends AbstractController
     #[Route('/cgv', name: 'app_cgv')]
     public function cgv(): Response
     {
-        //return $this->render('static/cgv.html.twig');
-        throw new AccessDeniedException();
+        return $this->render('static/cgv.html.twig');
     }
 
     #[Route('/accessibilite', name: 'app_accessibilite')]
